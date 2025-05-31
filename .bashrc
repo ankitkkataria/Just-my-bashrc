@@ -461,7 +461,7 @@ gshow() {
   fzf --ansi --no-sort --reverse --tiebreak=index \
       --bind=ctrl-s:toggle-sort \
       --preview 'echo {} | grep -o "[a-f0-9]\{7\}" | head -1 | xargs git show --color=always' \
-      --header "enter to view, ctrl-o to checkout, ctrl-y to copy hash" \
+      --header "enter to view, ctrl-o to checkout" \
       --bind "q:abort" \
       --bind "ctrl-o:execute-silent(echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs git checkout)+abort" \
       --bind "ctrl-d:preview-page-down" \
