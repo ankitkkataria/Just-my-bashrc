@@ -72,7 +72,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -105,7 +105,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
+# Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
@@ -119,12 +119,12 @@ fi
 eval "$(zoxide init bash)"
 eval "$(zoxide init --cmd cd bash)"
 
-# confirm before overwriting something
+# Confirm before overwriting something
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-# easier to read disk
+# Easier to read disk
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
 export PATH="$PATH:~/.local/bin/"
@@ -135,7 +135,19 @@ alias fs="exa --icons --group-directories-first --tree"
 alias pkill='ps -ef | fzf | awk "{print \$2}" | xargs kill -9'
 alias ll="exa --icons --group-directories-first -l"
 
-alias vim="nvim"     # human-readable sizes
+alias vim="nvim"      
+
+# Useful git aliases
+alias ga='git add'
+alias gs='git status'
+alias gl='git log'
+alias glo='git log --oneline --decorate --graph'
+alias gc='git commit'
+alias gcm="git commit -m"
+alias gp='git push'
+alias gpl='git pull'
+alias gb='git branch'
+alias gsw='git switch'
 
 # Some useful functions
 copyLine() {
