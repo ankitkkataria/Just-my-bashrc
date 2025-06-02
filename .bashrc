@@ -379,12 +379,12 @@ ptif () {
 }
 
 # Create a new directory and enter it
-mkdircd() {
+mkcd() {
         mkdir -p "$@"
         cd "$@" || exit
 }
 
-backupFolder () {
+backupFolder() {
     local source_dir="$1"
     local backup_name="${2:-backup-$(date +%Y%m%d-%H%M%S)}"
     local backup_dir="$HOME/.backups"
@@ -435,26 +435,6 @@ listBackups() {
     ls -lh "$backup_dir" | head -n 10
 }
 
-# Code statistics and analysis
-cs() {
-  local dir="${1:-.}"
-  echo "📊 Code Statistics for: $dir"
-  echo "─────────────────────────────────"
-  
-  # Language breakdown
-  find "$dir" -type f -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.go" -o -name "*.rs" -o -name "*.c" -o -name "*.cpp" -o -name "*.java" -o -name "*.sh" | 
-  xargs wc -l 2>/dev/null | 
-  tail -1 | 
-  awk '{print "📝 Total lines of code:", $1}'
-  
-  # File count by extension
-  find "$dir" -type f | sed 's/.*\.//' | sort | uniq -c | sort -nr | head -10
-  
-  # Largest files
-  echo -e "\n🗂️  Largest files:"
-  find "$dir" -type f -exec du -h {} + 2>/dev/null | sort -hr | head -5
-}
-
 gshow() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
@@ -483,3 +463,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Auto-Warpify
+[[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}�' 
