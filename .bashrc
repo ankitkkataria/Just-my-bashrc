@@ -134,11 +134,15 @@ alias tree="exa --tree --dirsfirst --group"
 alias fs="exa --icons --group-directories-first --tree"
 alias pkill='ps -ef | fzf | awk "{print \$2}" | xargs kill -9'
 alias ll="exa --icons --group-directories-first -l"
-
 alias vim="nvim"      
+alias vmi="nvim"      
+alias nivm="nvim"      
+alias nivm="nvim"      
+alias nimv="nvim"      
 
 # Useful git aliases
 alias ga='git add'
+alias gaa='git add .'
 alias gs='git status'
 alias gl='git log'
 alias glo='git log --oneline --decorate --graph'
@@ -465,4 +469,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Auto-Warpify
-[[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}�' 
+# [[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}' 
