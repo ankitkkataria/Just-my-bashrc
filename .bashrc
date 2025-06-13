@@ -137,6 +137,8 @@ alias ll="exa --icons --group-directories-first -l"
 alias vim="nvim"      
 alias vmi="nvim"      
 alias nivm="nvim"      
+alias nvm="nvim"      
+alias nim="nvim"      
 alias nivm="nvim"      
 alias nimv="nvim"      
 
@@ -154,10 +156,6 @@ alias gb='git branch'
 alias gsw='git switch'
 
 # Some useful functions
-copyLine() {
-  rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'batcat --color=always --highlight-line {2} {1}' | awk -F ':' '{print $3}' | sed 's/^\s+//' | xclip -selection clipboard 
-}
-
 # Search with ripgrep and sk (skim), then cd and open in neovim
 fw() {
   local selected
@@ -244,7 +242,8 @@ fd() {
   fi
 }
 
-captf() {
+# Copy absolute path to the file (shows a fzf popup with all the files in the current directory)
+cptf() {
   local file=$(find ${1:-.} -type f | sk --preview "batcat --color=always {}")
   if [ -n "$file" ]; then
     # Convert relative path to absolute path
@@ -256,6 +255,7 @@ captf() {
   fi
 }
 
+# Copy relative path to the file from where the command is being ran (shows a fzf popup with all the files in the current directory)
 crptf() {
   # Prompt the user to select a file
   local file=$(find ${1:-.} -type f | sk --preview "batcat --color=always {}")
@@ -324,6 +324,10 @@ cdu() {
   cd $d
 }
 
+copyLine() {
+  rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'batcat --color=always --highlight-line {2} {1}' | awk -F ':' '{print $3}' | sed 's/^\s+//' | xclip -selection clipboard 
+}
+
 cpwd() {
     local current_dir="$PWD"
     echo -n "$current_dir" | xclip -selection clipboard
@@ -384,6 +388,11 @@ ptif () {
 
 # Create a new directory and enter it
 mkcd() {
+        mkdir -p "$@"
+        cd "$@" || exit
+}
+
+mkdircd() {
         mkdir -p "$@"
         cd "$@" || exit
 }
@@ -469,4 +478,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Auto-Warpify
-# [[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}' 
+# [[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}�' 
