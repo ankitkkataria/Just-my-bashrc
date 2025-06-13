@@ -137,8 +137,6 @@ alias ll="exa --icons --group-directories-first -l"
 alias vim="nvim"      
 alias vmi="nvim"      
 alias nivm="nvim"      
-alias nvm="nvim"      
-alias nim="nvim"      
 alias nivm="nvim"      
 alias nimv="nvim"      
 
