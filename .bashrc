@@ -116,6 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# My code starts here 
+export EDITOR=nvim
+export VISUAL=nvim
+
 eval "$(zoxide init bash)"
 eval "$(zoxide init --cmd cd bash)"
 
@@ -476,4 +480,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Auto-Warpify
-# [[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}�' 
+# [[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash", "uname": "Linux" }}' 
+
+# opencode
+export PATH=/home/ankit/.opencode/bin:$PATH
